@@ -1,6 +1,6 @@
-div {
+/*div {
   border: 1px solid red;
-}
+}*/
 
 .background {
   position: relative;
@@ -13,4 +13,11 @@ div {
   background-color: rgba(255, 255, 255, 0.5);
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.signupButton {
+  position: relative;
+  width: 50%;
+  height: auto;
+  float: left;
 }
