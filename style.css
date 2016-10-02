@@ -1,3 +1,16 @@
 div {
   border: 1px solid red;
 }
+
+.background {
+  position: relative;
+  height: 100vh;
+  background-color: lightblue;
+}
+
+.infoBox {
+  height: 30vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
