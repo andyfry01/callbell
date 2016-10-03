@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Callbell</title>
+
+    <!-- Stylsheet/Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
+  </head>
+  <body>
+    <div class="container-fluid background">
+
+      <!-- Navbar -->
+      <div class="navbar navbar-collapse">
+        <span><h1>Callbell</h1></span>
+      </div>
+
+      <!-- Signup form -->
+      <div class="row">
+
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+          We'll need some profile information to register you for the service, please enter it below.
+          <form>
+            <div class="form-group">
+              <!-- Basic info section -->
+              <label for="basicInfo">Please enter your name and location below</label>
+              <div class="basicInfo">
+                <input type="text" class="form-control" placeholder="First name" required>
+                <input type="text" class="form-control" placeholder="Last name" required>
+                <input type="text" class="form-control" placeholder="Location" required>
+                <input type="text" class="form-control" placeholder="Language(s) spoken" required>
+              </div>
+
+              <!-- Experience info section -->
+              <label for="expInfo">Please enter information below regarding work experience</label>
+              <div class="expInfo">
+                <input type="number" class="form-control" placeholder="Years of experience">
+                <input type="text" class="form-control" placeholder="Current position">
+                <input type="text" class="form-control" placeholder="Brief description of position">
+                <input type="text" class="form-control" placeholder="Volunteer/service activities">
+              </div>
+
+              <!-- Licensing information  -->
+              <label for="licenseInfo">Please enter information below regarding licensing (this is for verification purposes and will not be shared publicly on your profile)</label>
+              <div class="licenseInfo">
+                <input type="text" class="form-control" placeholder="Medical license number">
+                <input type="text" class="form-control" placeholder="Malpractice insurance number">
+                <input type="text" class="form-control" placeholder="Certifications">
+              </div>
+
+              <!-- Personalization information  -->
+              <!-- Picture upload fxnionality forthcoming -->
+              <label for="personalization">You can upload a picture, write an about me, and add links to your social media profiles here</label>
+              <div class="personalization">
+                <input type="text" class="form-control" placeholder="About me">
+                <input type="text" class="form-control" placeholder="LinkedIn profile link">
+                <input type="text" class="form-control" placeholder="Facebook profile link">
+                <input type="text" class="form-control" placeholder="Twitter handle">
+              </div>
+
+              <div class="signupDiv text-center">
+                <button type="submit" class="signupButton btn btn-default">Create profile!</button>
+              </div>
+
+            </div> <!-- End form group div -->
+          </form> <!-- End signup form -->
+        </div> <!-- End signup row-->
+      </div> <!-- End signup row -->
+    </div> <!-- End page container -->
+  </body>
+</html>
