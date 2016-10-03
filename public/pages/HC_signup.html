@@ -21,47 +21,47 @@
 
         <div class="col-xs-12 col-md-6 col-md-offset-3">
           We'll need some profile information to register you for the service, please enter it below.
-          <form>
+          <form id="signupForm">
             <div class="form-group">
               <!-- Basic info section -->
               <label for="basicInfo">Please enter your name and location below</label>
               <div class="basicInfo">
-                <input type="text" class="form-control" placeholder="First name" required>
-                <input type="text" class="form-control" placeholder="Last name" required>
-                <input type="text" class="form-control" placeholder="Location" required>
-                <input type="text" class="form-control" placeholder="Primary language" required>
-                <input type="text" class="form-control" placeholder="Secondary language(s)">
+                <input type="text" class="form-control" id="firstName" placeholder="First name" required>
+                <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
+                <input type="text" class="form-control" id="location" placeholder="Location" required>
+                <input type="text" class="form-control" id="primaryLang" placeholder="Primary language" required>
+                <input type="text" class="form-control" id="secondaryLang" placeholder="Secondary language(s)">
               </div>
 
               <!-- Experience info section -->
               <label for="expInfo">Please enter information below regarding work experience</label>
               <div class="expInfo">
-                <input type="number" class="form-control" placeholder="Years of experience">
-                <input type="text" class="form-control" placeholder="Current position">
-                <input type="text" class="form-control" placeholder="Brief description of position">
-                <input type="text" class="form-control" placeholder="Volunteer/service activities">
+                <input type="number" class="form-control" id="yearsExp" placeholder="Years of experience">
+                <input type="text" class="form-control" id="currentPosition" placeholder="Current position">
+                <input type="text" class="form-control" id="positionDesc" placeholder="Brief description of position">
+                <input type="text" class="form-control" id="volunteer" placeholder="Volunteer/service activities">
               </div>
 
               <!-- Licensing information  -->
               <label for="licenseInfo">Please enter information below regarding licensing (this is for verification purposes and will not be shared publicly on your profile)</label>
               <div class="licenseInfo">
-                <input type="text" class="form-control" placeholder="Medical license number">
-                <input type="text" class="form-control" placeholder="Malpractice insurance number">
-                <input type="text" class="form-control" placeholder="Certifications">
+                <input type="text" class="form-control" id="medLiscenseNo" placeholder="Medical license number">
+                <input type="text" class="form-control" id="malpracticNo" placeholder="Malpractice insurance number">
+                <input type="text" class="form-control" id="certifications" placeholder="Certifications">
               </div>
 
               <!-- Personalization information  -->
               <!-- Picture upload fxnionality forthcoming -->
               <label for="personalization">You can upload a picture, write an about me, and add links to your social media profiles here</label>
               <div class="personalization">
-                <input type="text" class="form-control" placeholder="About me">
-                <input type="text" class="form-control" placeholder="LinkedIn profile link">
-                <input type="text" class="form-control" placeholder="Facebook profile link">
-                <input type="text" class="form-control" placeholder="Twitter handle">
+                <input type="text" class="form-control" id="aboutMe" placeholder="About me">
+                <input type="text" class="form-control" id="linkedinProfile" placeholder="LinkedIn profile link">
+                <input type="text" class="form-control" id="facebookProfile" placeholder="Facebook profile link">
+                <input type="text" class="form-control" id="twitterProfile" placeholder="Twitter handle">
               </div>
 
               <div class="signupDiv text-center">
-                <button type="submit" class="signupButton btn btn-default">Create profile!</button>
+                <button type="submit" id="submit">Create profile!</button>
               </div>
 
             </div> <!-- End form group div -->
@@ -70,5 +70,8 @@
       </div> <!-- End signup row -->
     </div> <!-- End page container -->
 
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="../js/spreadsheetinfo.js"></script>
+    <script src="../js/index.js"></script>
   </body>
 </html>
