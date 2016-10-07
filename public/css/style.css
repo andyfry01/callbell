@@ -1,18 +1,49 @@
 /*div {
   border: 1px solid red;
 }*/
+a {
+  color: white;
+}
 
 .background {
   position: relative;
   height: 100vh;
-  background-color: lightblue;
+  background: url('../img/road_flowers.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.infoBox {
-  height: 30vh;
+.cross {
+  color: red;
+  font-size: 5rem;
+  margin: 10px;
+}
+
+.brand {
+  font-size: 5rem;
+  color: white;
+  font-family: 'Pacifico', cursive;
+}
+
+.header {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+.header-links {
+  font-size: 3rem;
+  color: white;
+  font-family: 'Pacifico', cursive;
+  margin-right: 20px;
+}
+
+.contentBox {
+  height: 35vh;
   background-color: rgba(255, 255, 255, 0.5);
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 
@@ -25,6 +56,14 @@
 .signupButton {
   position: relative;
   width: 50%;
-  height: auto;
+  height: 50px;
   float: left;
+  font-family: 'Lora' serif;
+  font-style: normal;
+  font-size: 1.75rem;
+}
+
+.quote {
+  font-family: 'Lora' serif;
+  font-style: italic;
 }

@@ -4,45 +4,52 @@
   <meta charset="utf-8">
     <title>Callbell</title>
     <!-- Stylsheet/Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <!-- Google fonts CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Pacifico" rel="stylesheet">
   </head>
   <body>
 
     <!-- Navbar -->
     <div class="container-fluid background">
-      <div class="navbar navbar-collapse">
-        <span><h1>Callbell</h1></span>
-        <span>About</span>
-        <span>Contact</span>
+      <div class="navbar navbar-collapse header" role="navigation">
+        <ul class="nav navbar-nav navbar-left">
+          <li> <i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          </li class="navbar-right"> <span class='header-links'> <a href="#">About</a> </span> </li>
+          </li class="navbar-right"> <span class='header-links'> <a href="#">Contact</a> </span> </li>
+        </ul>
       </div>
 
       <!-- Quote area -->
       <div class="row">
-        <div class="infoBox col-xs-12 col-md-8 col-md-offset-2">
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati.
+        <div class="contentBox col-xs-12 col-md-8 col-md-offset-2 text-center">
+          <br>
+          <br>
+          <h1 class="quote"> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati.</h1>
         </div>
       </div>
 
       <!-- Signup area -->
       <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-3">
-          Sign up for the service
+        <div class="contentBox col-xs-12 col-md-8 col-md-offset-2 signup">
+          <h2>Sign up for the service</h2>
 
           <!-- Email/password input form -->
           <form>
             <div class="form-group">
-              <label for="userInput">Please enter your username</label>
+              <label for="userInput"><h3>Please enter a username and password to sign up!</h3></label>
               <div id="userInput">
                 <input type="email" class="form-control" placeholder="Email">
-                <!-- Uncomment when authorization is implemented, leaving out for security reasons, no API for passwords -->
-                <!-- <input type="text" class="form-control" placeholder="Password"> -->
+                <input type="text" class="form-control" placeholder="Password">
               </div>
 
               <!-- Signup buttons for professional/client -->
               <div class="signupDiv text-center">
-                <button type="submit" class="signupButton btn btn-default">Sign up as a<br>healthcare professional</button>
-                <button type="submit" class="signupButton btn btn-default">Sign up as a client</button>
+                <button type="submit" class="signupButton btn btn-default"><p>Sign up as a healthcare professional</p></button>
+                <button type="submit" class="signupButton btn btn-default"><p>Sign up as a client</p></button>
               </div>
             </div>
 
