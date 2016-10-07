@@ -5,26 +5,35 @@
     <title>Callbell</title>
 
     <!-- Stylsheet/Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="../css/style.css" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <!-- Google fonts CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Pacifico" rel="stylesheet">
+
   </head>
   <body>
     <div class="container-fluid background">
 
       <!-- Navbar -->
-      <div class="navbar navbar-collapse">
-        <span><h1>Callbell</h1></span>
+      <div class="navbar navbar-collapse header" role="navigation">
+        <ul class="nav navbar-nav navbar-left">
+          <li> <i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          </li class="navbar-right"> <span class='header-links'> <a href="#">About</a> </span> </li>
+          </li class="navbar-right"> <span class='header-links'> <a href="#">Contact</a> </span> </li>
+        </ul>
       </div>
 
       <!-- Signup form -->
       <div class="row">
 
-        <div class="col-xs-12 col-md-6 col-md-offset-3">
-          We'll need some profile information to register you for the service, please enter it below.
+        <div class="contentBox col-xs-12 col-md-6 col-md-offset-3">
+          <h1>We'll need some profile information to register you for the service, please enter it below.</h1>
           <form id="signupForm">
             <div class="form-group">
               <!-- Basic info section -->
-              <label for="basicInfo">Please enter your name and location below</label>
+              <label for="basicInfo"><h3>Please enter your name and location below</h3></label>
               <div class="basicInfo">
                 <input type="text" class="form-control" id="firstName" placeholder="First name" required>
                 <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
@@ -34,7 +43,7 @@
               </div>
 
               <!-- Experience info section -->
-              <label for="expInfo">Please enter information below regarding work experience</label>
+              <label for="expInfo"><h3>Please enter information below regarding work experience</h3></label>
               <div class="expInfo">
                 <input type="number" class="form-control" id="yearsExp" placeholder="Years of experience">
                 <input type="text" class="form-control" id="currentPosition" placeholder="Current position">
@@ -43,7 +52,7 @@
               </div>
 
               <!-- Licensing information  -->
-              <label for="licenseInfo">Please enter information below regarding licensing (this is for verification purposes and will not be shared publicly on your profile)</label>
+              <label for="licenseInfo"><h3>Please enter information below regarding licensing (this is for verification purposes and will not be shared publicly on your profile)</h3></label>
               <div class="licenseInfo">
                 <input type="text" class="form-control" id="medLiscenseNo" placeholder="Medical license number">
                 <input type="text" class="form-control" id="malpracticNo" placeholder="Malpractice insurance number">
@@ -52,7 +61,7 @@
 
               <!-- Personalization information  -->
               <!-- Picture upload fxnionality forthcoming -->
-              <label for="personalization">You can upload a picture, write an about me, and add links to your social media profiles here</label>
+              <label for="personalization"><h3>You can upload a picture, write an about me, and add links to your social media profiles here</h3></label>
               <div class="personalization">
                 <input type="text" class="form-control" id="aboutMe" placeholder="About me">
                 <input type="text" class="form-control" id="linkedinProfile" placeholder="LinkedIn profile link">
@@ -61,7 +70,7 @@
               </div>
 
               <div class="signupDiv text-center">
-                <button type="submit" id="submit">Create profile!</button>
+                <button type="submit" class="signupFormButton btn btn-default" id="submit">Create profile!</button>
               </div>
 
             </div> <!-- End form group div -->
