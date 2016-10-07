@@ -4,7 +4,8 @@ window.onload = function() {
   // Submit btn, form
   var formInfo = document.getElementById("signupForm").elements
 
-  var submitBtn = document.getElementById("submit").addEventListener("click", function() {
+  var submitBtn = document.getElementById("submit").addEventListener("click", function(e) {
+    e.preventDefault()
     postUserInfo(formInfo)
   })
 
@@ -19,14 +20,16 @@ window.onload = function() {
     for (var i = 0; i < formInfoLen; i++) {
       userInfoArr.push(formInfo[i].value)
     }
+    console.log(userInfoArr);
 
     // Ajax request once userInfoArr has been populated with form info
     $.ajax({
       type: "POST",
-      url: 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadSheetID + '/values/Sheet1!A1:P1?:append',
+      url: 'http://localhost:3000/HC/new',
       data: {
         'values': userInfoArr
       },
+      dataType: 'JSON',
       success: function(response) {
         console.log('response', response);
       }
