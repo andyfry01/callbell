@@ -32,15 +32,11 @@ window.onload = function() {
 
   // User signup AJAX
   var parseInputs = function(formInfo) {
-    console.log(formInfo);
-
     var newUser = {}
-
     var formInfoLen = formInfo.length
     for (var i = 0; i < formInfoLen; i++) {
       newUser[formInfo[i].id] = formInfo[i].value
     }
-    console.log(newUser);
     return newUser
   }
 
@@ -53,11 +49,16 @@ window.onload = function() {
         data: {
           profileInfo
         },
-        dataType: 'JSON',
+        // header: {
+        //   'Access-Control-Allow-Origin': '*'
+        // },
+        // dataType: 'JSON',
+        crossDomain: true,
         success: function(response) {
           console.log('response', response);
         }
       })
+
     } else if (profileInfo.isClient === true) {
       $.ajax({
         type: "POST",
@@ -65,7 +66,8 @@ window.onload = function() {
         data: {
           profileInfo
         },
-        dataType: 'JSON',
+        crossDomain: true,
+        ataType: 'JSON',
         success: function(response) {
           console.log('response', response);
         }
