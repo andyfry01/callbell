@@ -38,18 +38,18 @@
           <h2>Sign up for the service</h2>
 
           <!-- Email/password input form -->
-          <form>
+          <form id='signupForm'>
             <div class="form-group">
               <label for="userInput"><h3>Please enter a username and password to sign up!</h3></label>
               <div id="userInput">
-                <input type="email" class="form-control" placeholder="Email">
-                <input type="text" class="form-control" placeholder="Password">
+                <input type="email" class="form-control" placeholder="Email" id="email">
+                <input type="text" class="form-control" placeholder="Password" id="password">
               </div>
 
               <!-- Signup buttons for professional/client -->
               <div class="signupDiv text-center">
-                <button type="submit" class="signupButton btn btn-default"><p>Sign up as a healthcare professional</p></button>
-                <button type="submit" class="signupButton btn btn-default"><p>Sign up as a client</p></button>
+                <button type="submit" class="signupButton btn btn-default" id="HC_submit"><p>Sign up as a healthcare professional</p></button>
+                <button type="submit" class="signupButton btn btn-default" id="client_submit"><p>Sign up as a client</p></button>
               </div>
             </div>
 
@@ -59,7 +59,7 @@
     </div> <!-- End page container -->
 
     <!-- JS/jQuery/Bootstrap -->
-    <script src="./index.js"></script>
+    <script src="../js/landingPageSignup.js"></script>
     <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 

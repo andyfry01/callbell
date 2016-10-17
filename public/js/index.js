@@ -14,20 +14,29 @@ window.onload = function() {
   var postUserInfo = function(formInfo) {
     console.log("hi from postUserInfo");
 
-    var formInfoLen = formInfo.length
-    var userInfoArr = []
+    var userInfo = {}
 
+    var formInfoLen = formInfo.length
     for (var i = 0; i < formInfoLen; i++) {
-      userInfoArr.push(formInfo[i].value)
+      userInfo[formInfo[i].id] = formInfo[i].value
     }
-    console.log(userInfoArr);
+    console.log(userInfo);
+    
+    var user = new Object()
+    user.firstName = userInfoArr[0]
+    user.lastName = userInfoArr[1]
+    user.location = userInfoArr[3]
+    user.primaryLang = userInfoArr[4]
+    user.secondaryLang = userInfoArr[5]
+
+    console.log(user);
 
     // Ajax request once userInfoArr has been populated with form info
     $.ajax({
       type: "POST",
       url: 'http://localhost:3000/HC/new',
       data: {
-        'values': userInfoArr
+        user
       },
       dataType: 'JSON',
       success: function(response) {
