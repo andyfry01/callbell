@@ -17,7 +17,7 @@ window.onload = function() {
       type: 'POST',
       url: 'http://localhost:3000/HC/signup',
       data: {
-        email: getSessionStorage(),
+        sessionInfo: getSessionStorage(),
         userInfo
       },
       crossDomain: true,
@@ -28,7 +28,11 @@ window.onload = function() {
   }
 
   var getSessionStorage = function() {
-    return sessionStorage.getItem('email')
+    var sessionInfo = {
+      email: sessionStorage.getItem('email'),
+      password: sessionStorage.getItem('passHash')
+    }
+    return sessionInfo
   }
 
   // Parses inputs from the signup form and passes them into an object, which is in turn

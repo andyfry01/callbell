@@ -63,7 +63,6 @@ window.onload = function() {
         crossDomain: true,
         success: function(response) {
           console.log('response', response);
-          console.log('response header', response.header);
           if (response) {
             updateSessionStorage(response)
             window.location.href="http://localhost:8080/pages/HC_signup.html"
