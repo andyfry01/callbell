@@ -43,7 +43,7 @@ window.onload = function() {
     return newUser
   }
 
-  // Assign session storage to user email for further steps in signup process
+  // Writes user email to session storage for further steps in signup process
   updateSessionStorage = function(userInfo) {
     sessionStorage.setItem('email', userInfo.email)
   }
