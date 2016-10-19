@@ -49,13 +49,12 @@ window.onload = function() {
         data: {
           profileInfo
         },
-        // header: {
-        //   'Access-Control-Allow-Origin': '*'
-        // },
-        // dataType: 'JSON',
         crossDomain: true,
         success: function(response) {
           console.log('response', response);
+          if (response === 'OK') {
+            window.location.href="http://en.wikipedia.org"
+          }
         }
       })
 
@@ -67,9 +66,11 @@ window.onload = function() {
           profileInfo
         },
         crossDomain: true,
-        ataType: 'JSON',
         success: function(response) {
           console.log('response', response);
+          if (response === "OK") {
+            window.location.href="http://en.wikipedia.org"
+          }
         }
       })
     }

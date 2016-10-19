@@ -21,7 +21,7 @@ window.onload = function() {
       userInfo[formInfo[i].id] = formInfo[i].value
     }
     console.log(userInfo);
-    
+
     var user = new Object()
     user.firstName = userInfoArr[0]
     user.lastName = userInfoArr[1]
@@ -41,6 +41,9 @@ window.onload = function() {
       dataType: 'JSON',
       success: function(response) {
         console.log('response', response);
+        if (response) {
+          console.log('hi andy');
+        }
       }
     });
   }
