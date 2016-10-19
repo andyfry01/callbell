@@ -6,6 +6,7 @@ window.onload = function() {
 
   // Submit button
   var submitBtn = document.getElementById("submit").addEventListener("click", function(e) {
+    console.log('posting info?');
     e.preventDefault()
     var userInfo = parseInputs(formInfo)
     postUserInfo(userInfo)
@@ -15,7 +16,7 @@ window.onload = function() {
     console.log(userInfo)
     $.ajax({
       type: 'POST',
-      url: 'http://localhost:3000/HC/signup',
+      url: 'http://localhost:3000/client/signup',
       data: {
         sessionInfo: getSessionStorage(),
         userInfo
