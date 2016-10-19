@@ -42,7 +42,7 @@ window.onload = function() {
       success: function(response) {
         console.log('response', response);
         if (response) {
-          console.log('hi andy');
+          window.location.href='http://en.wikipedia.org'
         }
       }
     });

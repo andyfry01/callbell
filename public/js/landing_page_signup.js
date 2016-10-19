@@ -1,7 +1,7 @@
 window.onload = function() {
-  console.log("hello from index.js");
+  console.log("hello from landingPageSignup.js");
 
-  // Submit btn, form
+  // Submit btns for client/HC professional, input form for username/password
   var formInfo = document.getElementById("signupForm").elements
 
   var HCSubmitBtn = document.getElementById("HC_submit").addEventListener("click", function(e) {
@@ -14,7 +14,7 @@ window.onload = function() {
     addNewClient(formInfo)
   })
 
-
+  // Adds an HC to the DB, first parses inputs and then calls addUserAJAX
   var addNewHC = function(newUser){
     var profileInfo = parseInputs(newUser)
     profileInfo.isHC = true
@@ -22,6 +22,7 @@ window.onload = function() {
     addUserAJAX(profileInfo)
   }
 
+  // Adds a client to the DB, first parses inputs and then calls addUserAJAX
   var addNewClient = function(newUser){
     var profileInfo = parseInputs(newUser)
     profileInfo.isClient = true
@@ -30,7 +31,8 @@ window.onload = function() {
   }
 
 
-  // User signup AJAX
+  // Parses the inputs from the form and puts them into an object, which is then fed to the
+  // backend server
   var parseInputs = function(formInfo) {
     var newUser = {}
     var formInfoLen = formInfo.length
@@ -40,6 +42,7 @@ window.onload = function() {
     return newUser
   }
 
+  // Adds a user to the DB, different routes depending on if an HC/client is signing up
   var addUserAJAX = function(profileInfo) {
 
     if (profileInfo.isHC === true) {
@@ -53,10 +56,10 @@ window.onload = function() {
         success: function(response) {
           console.log('response', response);
           if (response === 'OK') {
-            window.location.href="http://en.wikipedia.org"
+            window.location.href="http://localhost:8080/pages/HC_signup.html"
           }
         }
-      })
+      }) // End AJAX
 
     } else if (profileInfo.isClient === true) {
       $.ajax({
@@ -69,12 +72,12 @@ window.onload = function() {
         success: function(response) {
           console.log('response', response);
           if (response === "OK") {
-            window.location.href="http://en.wikipedia.org"
+            window.location.href="http://localhost:8080/pages/client_signup.html"
           }
         }
-      })
-    }
-  }
+      }) // End AJAX
+    } // End else/if
+  } // End addUserAJAX
 
 
 } // End onload fxn
