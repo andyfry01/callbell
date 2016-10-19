@@ -46,6 +46,8 @@ window.onload = function() {
   // Writes user email to session storage for further steps in signup process
   updateSessionStorage = function(userInfo) {
     sessionStorage.setItem('email', userInfo.email)
+    sessionStorage.setItem('passHash', userInfo.password)
+    return true;
   }
 
   // Adds a user to the DB, different routes depending on if an HC/client is signing up
@@ -61,8 +63,9 @@ window.onload = function() {
         crossDomain: true,
         success: function(response) {
           console.log('response', response);
-          if (response === 'OK') {
-            updateSessionStorage(profileInfo)
+          console.log('response header', response.header);
+          if (response) {
+            updateSessionStorage(response)
             window.location.href="http://localhost:8080/pages/HC_signup.html"
           }
         }
@@ -78,9 +81,8 @@ window.onload = function() {
         crossDomain: true,
         success: function(response) {
           console.log('response', response);
-          if (response === "OK") {
-            updateSessionStorage(profileInfo)
-            console.log('session storage is now', sessionStorage.getItem(email));
+          if (response) {
+            updateSessionStorage(response)
             window.location.href="http://localhost:8080/pages/client_signup.html"
           }
         }
