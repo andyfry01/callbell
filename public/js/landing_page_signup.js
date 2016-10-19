@@ -39,7 +39,13 @@ window.onload = function() {
     for (var i = 0; i < formInfoLen; i++) {
       newUser[formInfo[i].id] = formInfo[i].value
     }
+    console.log(`newUser ${newUser}`);
     return newUser
+  }
+
+  // Assign session storage to user email for further steps in signup process
+  updateSessionStorage = function(userInfo) {
+    sessionStorage.setItem('email', userInfo.email)
   }
 
   // Adds a user to the DB, different routes depending on if an HC/client is signing up
@@ -56,6 +62,7 @@ window.onload = function() {
         success: function(response) {
           console.log('response', response);
           if (response === 'OK') {
+            updateSessionStorage(profileInfo)
             window.location.href="http://localhost:8080/pages/HC_signup.html"
           }
         }
@@ -72,6 +79,8 @@ window.onload = function() {
         success: function(response) {
           console.log('response', response);
           if (response === "OK") {
+            updateSessionStorage(profileInfo)
+            console.log('session storage is now', sessionStorage.getItem(email));
             window.location.href="http://localhost:8080/pages/client_signup.html"
           }
         }
