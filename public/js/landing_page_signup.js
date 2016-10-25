@@ -31,15 +31,14 @@ window.onload = function() {
   // Parses the inputs from the form and puts them into an object
   var buildUserObject = function(formInfo, button) {
     var newUser = {}
-    var formInfoLen = formInfo.length
     var buttonOptions = {
       HC: ['HC_signin', 'HC_signup'],
       client: ['client_signin', 'client_signup']
     }
+    // Grabs email and password from form (first two items in form elements array)
     for (var i = 0; i <= 1; i++) {
       newUser[formInfo[i].id] = formInfo[i].value
     }
-
     for (var option in buttonOptions) {
       for (var i = 0; i < buttonOptions[option].length; i++) {
         if (button === buttonOptions[option][i]) {
@@ -50,11 +49,6 @@ window.onload = function() {
             newUser.isClient = true
           }
         }
-      }
-    }
-    if (newUser.isHC === undefined) {
-      if (newUser.isClient === undefined) {
-        console.log("ERROR!!!");
       }
     }
     return newUser
@@ -68,21 +62,15 @@ window.onload = function() {
   // Adds an user to the DB, first parses inputs and then calls addUserAJAX
   var addNewUser = function(newUser, button){
     var profileInfo = buildUserObject(newUser, button)
-    console.log(profileInfo);
     var profileInfoJSON = convertToJSON(profileInfo)
-    console.log('the JSONified add user data now looks like this');
-    console.log(profileInfoJSON);
-    // addUserAJAX(profileInfoJSON)
+    addUserAJAX(profileInfoJSON)
   }
 
   // Authenticates user, first parses inputs and then calls authenticate
   var authenticateUser = function(user, button) {
     var profileInfo = buildUserObject(user, button)
-    console.log(profileInfo);
     var profileInfoJSON = convertToJSON(profileInfo)
-    console.log('the JSONified authenticate user data now looks like this');
-    console.log(profileInfoJSON);
-    // authenticate(profileInfoJSON)
+    authenticate(profileInfoJSON)
   }
 
 
@@ -95,70 +83,34 @@ window.onload = function() {
 
   var authenticate = function(profileInfo) {
     console.log(`authenticating ${profileInfo}`);
-    if (profileInfo.isHC === true) {
-      $.ajax({
-        type: "POST",
-        url: 'http://localhost:3000/authenticate',
-        data: {
-          profileInfo
-        },
-        crossDomain: true,
-        success: function(response) {
-          console.log('response', response);
-        }
-      }) // End AJAX
-    } else if (profileInfo.isClient === true) {
-      $.ajax({
-        type: "POST",
-        url: 'http://localhost:3000/authenticate',
-        data: {
-          profileInfo
-        },
-        crossDomain: true,
-        success: function(response) {
-          console.log('response', response);
-        }
-      }) // End AJAX
-    } // End else/if
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:3000/authenticate',
+      data: { profile: profileInfo },
+      crossDomain: true,
+      success: function(response) {
+        console.log('response', response);
+      }
+    }) // End AJAX
   }
 
   // Adds a user to the DB, different routes depending on if an HC/client is signing up
   var addUserAJAX = function(profileInfo) {
-
-    if (profileInfo.isHC === true) {
-      $.ajax({
-        type: "POST",
-        url: 'http://localhost:3000/HC/new',
-        data: {
-          profileInfo
-        },
-        crossDomain: true,
-        success: function(response) {
-          console.log('response', response);
-          if (response) {
-            updateSessionStorage(response)
-            window.location.href="http://localhost:8080/pages/HC_signup.html"
-          }
+    console.log('profileInfo being sent to BE');
+    console.log(profileInfo);
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:3000/user/new',
+      data: { profile: profileInfo },
+      crossDomain: true,
+      success: function(response) {
+        console.log('response', response);
+        if (response) {
+          updateSessionStorage(response)
+          window.location.href="http://localhost:8080/pages/HC_signup.html"
         }
-      }) // End AJAX
-
-    } else if (profileInfo.isClient === true) {
-      $.ajax({
-        type: "POST",
-        url: 'http://localhost:3000/client/new',
-        data: {
-          profileInfo
-        },
-        crossDomain: true,
-        success: function(response) {
-          console.log('response', response);
-          if (response) {
-            updateSessionStorage(response)
-            window.location.href="http://localhost:8080/pages/client_signup.html"
-          }
-        }
-      }) // End AJAX
-    } // End else/if
+      }
+    }) // End AJAX
   } // End addUserAJAX
 
 
