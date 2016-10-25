@@ -19,6 +19,8 @@ window.onload = function() {
       userInfo
     }
     var dataJSON = convertToJSON(data)
+    console.log('this is the data were sendin');
+    console.log(dataJSON);
     $.ajax({
       type: 'POST',
       url: 'http://localhost:3000/user/signup',
@@ -33,7 +35,7 @@ window.onload = function() {
   var getSessionStorage = function() {
     var sessionInfo = {
       email: sessionStorage.getItem('email'),
-      password: sessionStorage.getItem('passHash')
+      token: sessionStorage.getItem('token')
     }
     return sessionInfo
   }

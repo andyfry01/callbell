@@ -75,21 +75,21 @@ window.onload = function() {
 
 
   // Writes user email to session storage for further steps in signup process
-  var updateSessionStorage = function(userInfo) {
-    sessionStorage.setItem('email', userInfo.email)
-    sessionStorage.setItem('passHash', userInfo.password)
+  var updateSessionStorage = function(data) {
+    sessionStorage.setItem('email', data.email)
+    sessionStorage.setItem('token', data.tokenObj.token)
     return true;
   }
 
   var authenticate = function(profileInfo) {
-    console.log(`authenticating ${profileInfo}`);
+    console.log(`authenticating username and password`);
     $.ajax({
       type: "POST",
       url: 'http://localhost:3000/authenticate',
       data: { profile: profileInfo },
       crossDomain: true,
       success: function(response) {
-        console.log('response', response);
+        updateSessionStorage(response)
       }
     }) // End AJAX
   }
@@ -104,7 +104,8 @@ window.onload = function() {
       data: { profile: profileInfo },
       crossDomain: true,
       success: function(response) {
-        console.log('response', response);
+        console.log('response');
+        console.log(response);
         if (response) {
           updateSessionStorage(response)
           window.location.href="http://localhost:8080/pages/HC_signup.html"
