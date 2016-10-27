@@ -29,10 +29,7 @@
       <div class="row">
         <!-- Handlebars container -->
         <div id="profile-container"></div>
-
       </div> <!-- End profile row -->
-
-
     </div> <!-- End site wrapper -->
 
     <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -49,7 +46,7 @@
               <i class="heart glyphicon glyphicon-heart"> </i>
 
                 <div class="spec-cert-info">
-                  <p>Nursing specialization: to be added</p>
+                  <p>Nursing specialization: {{profile.specialization}}</p>
                 </div>
               </img>
             </div>
@@ -58,7 +55,7 @@
             <div class="user-info">
               <p class="nurse-name">{{profile.name}}</p>
               <br />
-              <p>Customizable nurse subheading: to be added</p>
+              <p>Customizable nurse subheading: {{profile.subheading}}</p>
               <p>Nurse verification status: to be added</p>
               <p>Location: {{profile.location}}</p>
               <p>Primary language: {{profile.primaryLang}}</p>
@@ -75,11 +72,14 @@
               <hr>
               <p>Years of experience: {{profile.yearsExp}}</p>
               <hr>
-              <p>Current position: {{profile.positionDesc}}</p>
+              <p>Specialization: {{profile.specialization}}</p>
+              <hr>
+              <p>Current position: {{profile.currentPosition}}</p>
+              <p>Description of position: {{profile.positionDesc}}</p>
               <hr>
               <p>Volunteer activities: {{profile.volunteer}}</p>
               <hr>
-              <p>Passions: To be added </p>
+              <p>Passions: {{profile.passions}} </p>
               <hr>
               <a href="{{profile.linkedinProfile}}">LinkedIn Profile</a>
               <a href="{{profile.facebookProfile}}">Facebook Profile</a>

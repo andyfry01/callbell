@@ -12,37 +12,8 @@ window.onload = function() {
     postUserInfo(userInfo)
   })
 
-  var postUserInfo = function(userInfo) {
-    console.log(userInfo)
-    var data = {
-      sessionInfo: getSessionStorage(),
-      userInfo
-    }
-    var dataJSON = convertToJSON(data)
-    console.log('this is the data were sendin');
-    console.log(dataJSON);
-    $.ajax({
-      type: 'POST',
-      url: 'http://localhost:3000/user/signup',
-      data: { data: dataJSON },
-      crossDomain: true,
-      success: function(response) {
-        console.log('response from backend', response);
-      }
-    })
-  }
-
-  var getSessionStorage = function() {
-    var sessionInfo = {
-      email: sessionStorage.getItem('email'),
-      token: sessionStorage.getItem('token')
-    }
-    return sessionInfo
-  }
-
   // Parses inputs from the signup form and passes them into an object, which is in turn
   // sent to the backend
-
   var buildUserInfoObject = function(formInfo, button) {
 
     var userInfo = {}
@@ -62,6 +33,34 @@ window.onload = function() {
 
   var convertToJSON = function(object) {
     return JSON.stringify(object)
+  }
+
+  var getSessionStorage = function() {
+    var sessionInfo = {
+      email: sessionStorage.getItem('email'),
+      token: sessionStorage.getItem('token')
+    }
+    return sessionInfo
+  }
+
+  var postUserInfo = function(userInfo) {
+    console.log(userInfo)
+    var data = {
+      sessionInfo: getSessionStorage(),
+      userInfo
+    }
+    var dataJSON = convertToJSON(data)
+    console.log('this is the data were sendin');
+    console.log(dataJSON);
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:3000/user/signup',
+      data: { data: dataJSON },
+      crossDomain: true,
+      success: function(response) {
+        console.log('response from backend', response);
+      }
+    })
   }
 
 } // End window.onload
