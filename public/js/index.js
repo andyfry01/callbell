@@ -10,7 +10,7 @@ window.onload = function() {
   })
 
 
-  // Posts user info to Google Sheets spreadsheet
+  // Posts user info to DB
   var postUserInfo = function(formInfo) {
     console.log("hi from postUserInfo");
 

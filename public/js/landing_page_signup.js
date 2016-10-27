@@ -78,6 +78,12 @@ window.onload = function() {
   var updateSessionStorage = function(data) {
     sessionStorage.setItem('email', data.email)
     sessionStorage.setItem('token', data.tokenObj.token)
+    if (data.isHC) {
+      sessionStorage.setItem('isHC', true)
+    }
+    if (data.isClient) {
+      sessionStorage.setItem('isClient', true)
+    }
     return true;
   }
 
@@ -108,7 +114,6 @@ window.onload = function() {
         console.log(response);
         if (response) {
           updateSessionStorage(response)
-          window.location.href="http://localhost:8080/pages/HC_signup.html"
         }
       }
     }) // End AJAX
