@@ -15,8 +15,17 @@ window.onload = function() {
     sessionData.isClient = true
   }
 
-  console.log('Session storage data:');
-  console.log(sessionData);
+  var fillTemplate = function(data) {
+    var source = document.getElementById('nurse_profile_template').innerHTML
+    console.log('source');
+    console.log(source);
+    var template = Handlebars.compile(source)
+    console.log('template');
+    console.log(template);
+    var html = template(data)
+    var targetDiv = document.getElementById('profile-container')
+    targetDiv.innerHTML = html
+  }
 
   $.ajax({
     type: 'POST',
@@ -26,6 +35,7 @@ window.onload = function() {
     success: function(data) {
       console.log('Data returned from API:');
       console.log(data);
+      fillTemplate(data)
     }
   })
 
