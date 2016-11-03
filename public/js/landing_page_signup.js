@@ -63,31 +63,24 @@ window.onload = function() {
   var addNewUser = function(newUser, button){
     var profileInfo = buildUserObject(newUser, button)
     var profileInfoJSON = convertToJSON(profileInfo)
-    addUserAJAX(profileInfoJSON)
+    addUserAJAX(profileInfoJSON, redirect)
   }
 
   // Authenticates user, first parses inputs and then calls authenticate
   var authenticateUser = function(user, button) {
     var profileInfo = buildUserObject(user, button)
     var profileInfoJSON = convertToJSON(profileInfo)
-    authenticate(profileInfoJSON)
+    authenticate(profileInfoJSON, redirect)
   }
 
 
   // Writes user email to session storage for further steps in signup process
   var updateSessionStorage = function(data) {
-    sessionStorage.setItem('email', data.email)
     sessionStorage.setItem('token', data.tokenObj.token)
-    if (data.isHC) {
-      sessionStorage.setItem('isHC', true)
-    }
-    if (data.isClient) {
-      sessionStorage.setItem('isClient', true)
-    }
     return true;
   }
 
-  var authenticate = function(profileInfo) {
+  var authenticate = function(profileInfo, next) {
     console.log(`authenticating username and password`);
     $.ajax({
       type: "POST",
@@ -96,12 +89,13 @@ window.onload = function() {
       crossDomain: true,
       success: function(response) {
         updateSessionStorage(response)
+        next('login', profileInfo)
       }
     }) // End AJAX
   }
 
   // Adds a user to the DB, different routes depending on if an HC/client is signing up
-  var addUserAJAX = function(profileInfo) {
+  var addUserAJAX = function(profileInfo, next) {
     console.log('profileInfo being sent to BE');
     console.log(profileInfo);
     $.ajax({
@@ -114,11 +108,26 @@ window.onload = function() {
         console.log(response);
         if (response) {
           updateSessionStorage(response)
+          next('signup', profileInfo)
         }
       }
     }) // End AJAX
   } // End addUserAJAX
 
+  var redirect = function(path, profileInfo) {
+    if (path === 'login') {
+      window.location.replace("http://localhost:8080/pages/dashboard.html")
+    }
+    if (path === 'signup') {
+      var userInfo = JSON.parse(profileInfo)
+      if (userInfo.isHC === true) {
+        window.location.replace("http://localhost:8080/pages/edit_profile_HC.html")
+      }
+      if (userInfo.isClient === true) {
+        window.location.replace("http://localhost:8080/pages/edit_profile_client.html")
+      }
+    }
+  }
 
 
 } // End onload fxn

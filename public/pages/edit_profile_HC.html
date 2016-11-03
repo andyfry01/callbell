@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Callbell</title>
+
+    <!-- Stylsheet/Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen">
+    <!-- Google fonts CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Lora|Pacifico" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container-fluid background">
+
+      <!-- Navbar -->
+      <div class="navbar navbar-collapse header" role="navigation">
+        <ul class="nav navbar-nav navbar-left">
+          <li> <i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          </li class="navbar-right"> <span class='header-links'> <a href="#">About</a> </span> </li>
+          </li class="navbar-right"> <span class='header-links'> <a href="#">Contact</a> </span> </li>
+        </ul>
+      </div> <!-- End navbar -->
+
+      <!-- Signup form -->
+      <div class="row">
+        <div class="contentBox col-xs-12 col-md-6 col-md-offset-3">
+          <div id="HC_form_container"></div>
+          <div class="signupDiv text-center">
+            <button type="submit" class="signupFormButton btn btn-default" id="HC_submit">Create profile!</button>
+          </div>
+
+        </div> <!-- End signup col-->
+
+      </div> <!-- End signup row -->
+    </div> <!-- End page container -->
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+
+    <script id='HC_edit_template' type='text/x-handlebars-template'>
+
+      <h1>We will need some profile information to register you for the service, please enter it below.</h1>
+      <form id="signupForm">
+        <div class="form-group">
+          <!-- Basic info section -->
+          <label for="basicInfo"><h3>Please enter your name and location below</h3></label>
+          <div class="basicInfo">
+            {{#if profile.firstName}}
+              <input type="text" class="form-control" id="firstName" value="{{profile.firstName}}" placeholder="First name" required>
+            {{else}}
+              <input type="text" class="form-control" id="firstName" placeholder="First name" required>
+            {{/if}}
+            {{#if profile.lastName}}
+              <input type="text" class="form-control" id="lastName" value="{{profile.lastName}}" placeholder="Last name" required>
+            {{else}}
+              <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
+            {{/if}}
+            {{#if profile.location}}
+              <input type="text" class="form-control" id="location" value="{{profile.location}}" placeholder="Location" required>
+            {{else}}
+              <input type="text" class="form-control" id="location" placeholder="Location" required>
+            {{/if}}
+            {{#if profile.primaryLang}}
+              <input type="text" class="form-control" id="primaryLang" value="{{profile.primaryLang}}" placeholder="Primary language" required>
+            {{else}}
+              <input type="text" class="form-control" id="primaryLang" placeholder="Primary language" required>
+            {{/if}}
+            {{#if profile.secondaryLang}}
+              <input type="text" class="form-control" id="secondaryLang" value="{{profile.secondaryLang}}" placeholder="Secondary language(s) (if any)">
+            {{else}}
+              <input type="text" class="form-control" id="secondaryLang" placeholder="Secondary language(s) (if any)">
+            {{/if}}
+          </div>
+
+          <!-- Experience info section -->
+          <label for="expInfo"><h3>Please enter information below regarding work experience</h3></label>
+          <div class="expInfo">
+            {{#if profile.yearsExp}}
+              <input type="number" class="form-control" id="yearsExp" value="{{profile.yearsExp}}" placeholder="How many years of experience do you have?">
+            {{else}}
+              <input type="number" class="form-control" id="yearsExp" placeholder="How many years of experience do you have?">
+            {{/if}}
+            {{#if profile.specialization}}
+              <input type="text" class="form-control" id="specialization" value="{{profile.specialization}}" placeholder="What is your area of specialization?">
+            {{else}}
+              <input type="text" class="form-control" id="specialization" placeholder="What is your area of specialization?">
+            {{/if}}
+            {{#if profile.currentPosition}}
+              <input type="text" class="form-control" id="currentPosition" value="{{profile.currentPosition}}" placeholder="What is your current job position?">
+            {{else}}
+              <input type="text" class="form-control" id="currentPosition" placeholder="What is your current job position?">
+            {{/if}}
+            {{#if profile.positionDesc}}
+              <input type="text" class="form-control" id="positionDesc" value="{{profile.positionDesc}}" placeholder="Add a brief description of the position">
+            {{else}}
+              <input type="text" class="form-control" id="positionDesc" placeholder="Add a brief description of the position">
+            {{/if}}
+            {{#if profile.volunteer}}
+              <input type="text" class="form-control" id="volunteer" value="{{profile.volunteer}}" placeholder="Enter a description of any service/volunteer opportunities you participate in">
+            {{else}}
+              <input type="text" class="form-control" id="volunteer" placeholder="Enter a description of any service/volunteer opportunities you participate in">
+            {{/if}}
+          </div>
+
+          <!-- Licensing information  -->
+          <label for="licenseInfo"><h3>Please enter information below regarding licensing (this is for verification purposes and will not be shared publicly on your profile)</h3></label>
+          <div class="licenseInfo">
+            {{#if profile.medLiscenseNo}}
+              <input type="text" class="form-control" id="medLiscenseNo" value="{{profile.medLiscenseNo}}" placeholder="Medical license number">
+            {{else}}
+              <input type="text" class="form-control" id="medLiscenseNo" placeholder="Medical license number">
+            {{/if}}
+            {{#if profile.malpracticeNo}}
+              <input type="text" class="form-control" id="malpracticeNo" value="{{profile.malpracticeNo}}" placeholder="Malpractice insurance number">
+            {{else}}
+              <input type="text" class="form-control" id="malpracticeNo" placeholder="Malpractice insurance number">
+            {{/if}}
+            {{#if profile.certifications}}
+              <input type="text" class="form-control" id="certifications" value="{{profile.certifications}}" placeholder="Certifications">
+            {{else}}
+              <input type="text" class="form-control" id="certifications" placeholder="Certifications">
+            {{/if}}
+          </div>
+
+          <!-- Personalization information  -->
+          <!-- Picture upload fxnionality forthcoming -->
+          <label for="personalization"><h3>You can upload a picture, write an about me, and add links to your social media profiles here</h3></label>
+          <div class="personalization">
+            {{#if profile.aboutMe}}
+              <input type="text" class="form-control" id="aboutMe" value="{{profile.aboutMe}}" placeholder="Please write a brief paragraph about yourself (background, interest, hobbies, etc.)">
+            {{else}}
+              <input type="text" class="form-control" id="aboutMe" placeholder="Please write a brief paragraph about yourself (background, interest, hobbies, etc.)">
+            {{/if}}
+            {{#if profile.subheading}}
+              <input type="text" class="form-control" id="subheading" value="{{profile.subheading}}" placeholder="Write a brief profile subheading/catchy one-liner about yourself (this will appear under your name when clients are browsing profiles)">
+            {{else}}
+              <input type="text" class="form-control" id="subheading" placeholder="Write a brief profile subheading/catchy one-liner about yourself (this will appear under your name when clients are browsing profiles)">
+            {{/if}}
+            {{#if profile.passions}}
+              <input type="text" class="form-control" id="passions" value="{{profile.passions}}" placeholder="Do you have any passions you'd like to tell us about? Describe them here.">
+            {{else}}
+              <input type="text" class="form-control" id="passions" placeholder="Do you have any passions you'd like to tell us about? Describe them here.">
+            {{/if}}
+            {{#if profile.linkedinProfile}}
+              <input type="text" class="form-control" id="linkedinProfile" value="{{profile.linkedinProfile}}" placeholder="Add your LinkedIn profile (if you have one)">
+            {{else}}
+              <input type="text" class="form-control" id="linkedinProfile" placeholder="Add your LinkedIn profile (if you have one)">
+            {{/if}}
+            {{#if profile.facebookProfile}}
+              <input type="text" class="form-control" id="facebookProfile" value="{{profile.facebookProfile}}" placeholder="Add your Facebook profile link (if you have one)">
+            {{else}}
+              <input type="text" class="form-control" id="facebookProfile" placeholder="Add your Facebook profile link (if you have one)">
+            {{/if}}
+            {{#if profile.twitterProfile}}
+              <input type="text" class="form-control" id="twitterProfile" value="{{profile.twitterProfile}}" placeholder="Add your Twitter profile name (if you have one)">
+            {{else}}
+              <input type="text" class="form-control" id="twitterProfile" placeholder="Add your Twitter profile name (if you have one)">
+            {{/if}}
+          </div>
+        </div> <!-- End form group div -->
+      </form> <!-- End signup form -->
+
+    </script>
+    <script src="../js/edit_profile.js"></script>
+
+  </body>
+</html>

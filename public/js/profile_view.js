@@ -2,15 +2,7 @@ window.onload = function() {
   console.log('hello from profile_view.js');
 
   var sessionData =  {
-    email: sessionStorage.getItem('email'),
     token: sessionStorage.getItem('token')
-  }
-
-  if (sessionStorage.getItem('isHC')) {
-    sessionData.isHC = true
-  }
-  if (sessionStorage.getItem('isClient')) {
-    sessionData.isClient = true
   }
 
   var fillTemplate = function(data) {
