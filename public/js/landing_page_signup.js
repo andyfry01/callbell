@@ -87,9 +87,14 @@ window.onload = function() {
       url: 'http://localhost:3000/authenticate',
       data: { profile: profileInfo },
       crossDomain: true,
-      success: function(response) {
-        updateSessionStorage(response)
-        next('login', profileInfo)
+      statusCode: {
+        406: function(response) {
+          alert("We're sorry, that email or password were incorrect.")
+        },
+        200: function(response) {
+          updateSessionStorage(response)
+          next('login')
+        }
       }
     }) // End AJAX
   }
@@ -103,29 +108,25 @@ window.onload = function() {
       url: 'http://localhost:3000/user/new',
       data: { profile: profileInfo },
       crossDomain: true,
-      success: function(response) {
-        console.log('response');
-        console.log(response);
-        if (response) {
+      statusCode: {
+        409: function(response) {
+          console.log(response);
+          alert('A user with that email already exists in our system, did you mean to log in?')
+        },
+        201: function(response) {
           updateSessionStorage(response)
-          next('signup', profileInfo)
+          next('signup')
         }
       }
     }) // End AJAX
   } // End addUserAJAX
 
-  var redirect = function(path, profileInfo) {
+  var redirect = function(path) {
     if (path === 'login') {
       window.location.replace("http://localhost:8080/pages/dashboard.html")
     }
     if (path === 'signup') {
-      var userInfo = JSON.parse(profileInfo)
-      if (userInfo.isHC === true) {
-        window.location.replace("http://localhost:8080/pages/edit_profile.html")
-      }
-      if (userInfo.isClient === true) {
-        window.location.replace("http://localhost:8080/pages/edit_profile.html")
-      }
+      window.location.replace("http://localhost:8080/pages/edit_profile.html")
     }
   }
 
