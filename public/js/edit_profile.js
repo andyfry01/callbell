@@ -62,28 +62,21 @@ var postUserInfo = function(userInfo) {
 }
 
 var fillTemplate = function(data) {
-  if (document.getElementById('HC_edit_template')) {
+  if (data.profile.isHC) {
     var source = document.getElementById('HC_edit_template').innerHTML
   }
-  if (document.getElementById('client_edit_temlate')) {
-    var source = document.getElementById('client_edit_temlate').innerHTML
+  if (data.profile.isClient) {
+    var source = document.getElementById('client_edit_template').innerHTML
   }
-
   var template = Handlebars.compile(source)
   var html = template(data)
-
-  if (document.getElementById('HC_form_container')) {
-    var targetDiv = document.getElementById('HC_form_container')
-  }
-  if (document.getElementById('client_form_container')) {
-    var targetDiv = document.getElementById('client_form_container')
-  }
+  var targetDiv = document.getElementById('edit_profile_container')
   targetDiv.innerHTML = html
 }
 
 
 window.onload = function() {
-  console.log('hello from signup_form.js');
+  console.log('hello from edit_profile.js');
 
   getUserInfo()
 

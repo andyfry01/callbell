@@ -10,7 +10,12 @@ var getSessionStorage = function() {
 }
 
 var fillTemplate = function(data) {
-  var source = document.getElementById('nurse_profile_template').innerHTML
+  if (data.profile.isHC) {
+    var source = document.getElementById('nurse_profile_template').innerHTML
+  }
+  if (data.profile.isClient) {
+    var source = document.getElementById('client_profile_template').innerHTML
+  }
   var template = Handlebars.compile(source)
   var html = template(data)
   var targetDiv = document.getElementById('profile-container')

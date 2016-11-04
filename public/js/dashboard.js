@@ -13,11 +13,11 @@ window.onload = function() {
   // Click handlers
   editProfileButton.addEventListener('click', function() {
     console.log('editProfileButton clicked!');
-    window.location.href= "http://localhost:8080/pages/edit_profile_HC.html"
+    window.location.replace("http://localhost:8080/pages/edit_profile.html")
   })
   viewProfileButton.addEventListener('click', function() {
     console.log('viewProfileButton clicked!');
-    window.location.href= "http://localhost:8080/pages/profile.html"
+    window.location.replace("http://localhost:8080/pages/profile.html")
   })
   browseProfilesButton.addEventListener('click', function() {
     console.log('browseProfilesButton clicked!');

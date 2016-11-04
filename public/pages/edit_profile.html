@@ -28,7 +28,7 @@
       <!-- Signup form -->
       <div class="row">
         <div class="contentBox col-xs-12 col-md-6 col-md-offset-3">
-          <div id="HC_form_container"></div>
+          <div id="edit_profile_container"></div>
           <div class="signupDiv text-center">
             <button type="submit" class="signupFormButton btn btn-default" id="HC_submit">Create profile!</button>
           </div>
@@ -43,7 +43,6 @@
 
 
     <script id='HC_edit_template' type='text/x-handlebars-template'>
-
       <h1>We will need some profile information to register you for the service, please enter it below.</h1>
       <form id="signupForm">
         <div class="form-group">
@@ -160,6 +159,54 @@
               <input type="text" class="form-control" id="twitterProfile" value="{{profile.twitterProfile}}" placeholder="Add your Twitter profile name (if you have one)">
             {{else}}
               <input type="text" class="form-control" id="twitterProfile" placeholder="Add your Twitter profile name (if you have one)">
+            {{/if}}
+          </div>
+        </div> <!-- End form group div -->
+      </form> <!-- End signup form -->
+    </script>
+
+    <script id='client_edit_template' type='text/x-handlebars-template'>
+      <h1>We will need some profile information to register you for the service, please enter it below.</h1>
+      <form id="signupForm">
+        <div class="form-group">
+
+          <!-- Basic info section -->
+          <label for="basicInfo"><h3>Please enter your name and location below></h3></label>
+          <div class="basicInfo">
+            {{#if profile.firstName}}
+              <input type="text" class="form-control" id="firstName" value="{{profile.firstName}}" placeholder="First name" required>
+            {{else}}
+              <input type="text" class="form-control" id="firstName" placeholder="First name" required>
+            {{/if}}
+            {{#if profile.lastName}}
+              <input type="text" class="form-control" id="lastName" value="{{profile.lastName}}" placeholder="Last name" required>
+            {{else}}
+              <input type="text" class="form-control" id="lastName" placeholder="Last name" required>
+            {{/if}}
+            {{#if profile.location}}
+              <input type="text" class="form-control" id="location" value="{{profile.location}}" placeholder="Location" required>
+            {{else}}
+              <input type="text" class="form-control" id="location" placeholder="Location" required>
+            {{/if}}
+            {{#if profile.primaryLang}}
+              <input type="text" class="form-control" id="primaryLang" value="{{profile.primaryLang}}" placeholder="Primary language" required>
+            {{else}}
+              <input type="text" class="form-control" id="primaryLang" placeholder="Primary language" required>
+            {{/if}}
+            {{#if profile.secondaryLang}}
+              <input type="text" class="form-control" id="secondaryLang" value="{{profile.secondaryLang}}" placeholder="Secondary language(s) (if any)">
+            {{else}}
+              <input type="text" class="form-control" id="secondaryLang" placeholder="Secondary language(s) (if any)">
+            {{/if}}
+          </div>
+
+          <!-- Needs info section -->
+          <label for="needsInfo"><h3>Please describe your care needs</h3></label>
+          <div class="needsInfo">
+            {{#if profile.needsInfo}}
+              <input type="text" class="form-control" id="needsInfo" value="{{profile.needsInfo}}" placeholder="Please write a brief paragraph about yourself (background, interest, hobbies, etc.)">
+            {{else}}
+              <input type="text" class="form-control" id="needsInfo" placeholder="Please write a description of your care needs.">
             {{/if}}
           </div>
         </div> <!-- End form group div -->

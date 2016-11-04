@@ -121,10 +121,10 @@ window.onload = function() {
     if (path === 'signup') {
       var userInfo = JSON.parse(profileInfo)
       if (userInfo.isHC === true) {
-        window.location.replace("http://localhost:8080/pages/edit_profile_HC.html")
+        window.location.replace("http://localhost:8080/pages/edit_profile.html")
       }
       if (userInfo.isClient === true) {
-        window.location.replace("http://localhost:8080/pages/edit_profile_client.html")
+        window.location.replace("http://localhost:8080/pages/edit_profile.html")
       }
     }
   }
