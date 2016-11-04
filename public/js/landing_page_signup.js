@@ -1,5 +1,26 @@
+// Retrieves token from session storage
+var getSessionStorage = function() {
+  return sessionStorage.getItem('token')
+}
+
+var fillHandlebars = function () {
+  var source = document.getElementById('brand_template').innerHTML
+  var template = Handlebars.compile(source)
+  if ( getSessionStorage() ) {
+    var html = template({target: 'http://localhost:8080/pages/dashboard.html'})
+  } else {
+    var html = template({target: 'http://localhost:8080/pages/index.html'})
+  }
+  var targetDiv = document.getElementById('brand_container')
+  console.log('target div is');
+  console.log(targetDiv);
+  targetDiv.innerHTML = html
+}
+
 window.onload = function() {
   console.log("hello from landingPageSignup.js");
+
+  fillHandlebars()
 
   // Submit btns for client/HC professional, input form for username/password
   var formInfo = document.getElementById("signupForm").elements
@@ -73,8 +94,7 @@ window.onload = function() {
     authenticate(profileInfoJSON, redirect)
   }
 
-
-  // Writes user email to session storage for further steps in signup process
+  // Writes token to session storage
   var updateSessionStorage = function(data) {
     sessionStorage.setItem('token', data.tokenObj.token)
     return true;
