@@ -59,11 +59,11 @@ window.onload = function() {
     return JSON.stringify(object)
   }
 
-  // Adds an user to the DB, first parses inputs and then calls addUserAJAX
+  // Adds an user to the DB, first parses inputs and then calls addUser
   var addNewUser = function(newUser, button){
     var profileInfo = buildUserObject(newUser, button)
     var profileInfoJSON = convertToJSON(profileInfo)
-    addUserAJAX(profileInfoJSON, redirect)
+    addUser(profileInfoJSON, redirect)
   }
 
   // Authenticates user, first parses inputs and then calls authenticate
@@ -80,6 +80,8 @@ window.onload = function() {
     return true;
   }
 
+  // Makes request to authenticate route, updates session storage with token and redirects to
+  // the dashboard if login is successful. Otherwise alerts an error message
   var authenticate = function(profileInfo, next) {
     console.log(`authenticating username and password`);
     $.ajax({
@@ -99,8 +101,9 @@ window.onload = function() {
     }) // End AJAX
   }
 
-  // Adds a user to the DB, different routes depending on if an HC/client is signing up
-  var addUserAJAX = function(profileInfo, next) {
+  // Adds a user to the DB. Makes request to user/new and redirects to edit_profile if
+  // request is successful. If user already exists, alerts error message.
+  var addUser = function(profileInfo, next) {
     console.log('profileInfo being sent to BE');
     console.log(profileInfo);
     $.ajax({
@@ -119,7 +122,7 @@ window.onload = function() {
         }
       }
     }) // End AJAX
-  } // End addUserAJAX
+  } // End addUser
 
   var redirect = function(path) {
     if (path === 'login') {
