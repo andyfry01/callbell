@@ -48,6 +48,7 @@
           <div class="picture-div">
             <img class="profile-picture" src="../img/demo_nurses/nurse_1.jpg">
             <i class="heart glyphicon glyphicon-heart"> </i>
+            {{#if this.isHC}}
               <div class="spec-cert-info">
                 {{#if this.specialization}}
                 <p>{{this.specialization}}</p>
@@ -55,19 +56,22 @@
                 <p>No specialization provided</p>
                 {{/if}}
               </div>
+            {{/if}}
             </img>
 
           </div>
           <div class="user-info">
-            {{#if this.name}}
+            {{#if this.firstName}}
             <p class="nurse-name">{{this.firstName}} {{this.lastName}}</p>
             {{else}}
             <p class="nurse-name">No name provided</p>
             {{/if}}
-            {{#if this.subheading}}
-            <p>{{this.subheading}}</p>
-            {{else}}
-            <p>No subheading provided</p>
+            {{#if this.isHC}}
+              {{#if this.subheading}}
+              <p>{{this.subheading}}</p>
+              {{else}}
+              <p>No subheading provided</p>
+              {{/if}}
             {{/if}}
             <i class="message glyphicon glyphicon-envelope"> </i>
           </div>
