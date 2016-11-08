@@ -5,6 +5,38 @@ var getSessionStorage = function() {
   return sessionInfo
 }
 
+var addLinkListener = function() {
+  var profileLinks = document.getElementsByClassName('profile_link')
+  for (var i = 0; i < profileLinks.length; i++) {
+    profileLinks[i].addEventListener('click', function(e) {
+      console.log(e.path[3].id);
+    })
+  }
+}
+
+var getUserProfile = function(profileID) {
+  var data = {
+    sessionData: getSessionStorage(),
+    id: profileID
+  }
+  var dataJSON = convertToJSON(data)
+
+  $.ajax({
+    type: 'POST',
+    data: { data: dataJSON },
+    crossDomain: true,
+    statusCode: {
+      406: function(response) {
+        alert("Sorry, we had a problem loading that profile, please try again.")
+      },
+      200: function(response) {
+
+      }
+    }
+
+  })
+}
+
 var fillBrandTemplate = function () {
   var source = document.getElementById('brand_template').innerHTML
   var template = Handlebars.compile(source)
@@ -14,8 +46,6 @@ var fillBrandTemplate = function () {
     var html = template({target: 'http://localhost:8080/pages/index.html'})
   }
   var targetDiv = document.getElementById('brand_container')
-  console.log('target div is');
-  console.log(targetDiv);
   targetDiv.innerHTML = html
 }
 
@@ -23,21 +53,13 @@ var convertToJSON = function(object) {
   return JSON.stringify(object)
 }
 
-var fillProfileTemplates = function(profileData) {
-
-  console.log('profileData');
-  console.log(profileData);
+var fillProfilesTemplate = function(profileData, next) {
   var source = document.getElementById('profile_overview_template').innerHTML
   var template = Handlebars.compile(source)
-  console.log('template');
-  console.log(template);
   var html = template({profiles: profileData})
-  console.log("html");
-  console.log(html);
   var targetDiv = document.getElementById('profile_overview_container')
-  console.log("targetDiv");
-  console.log(targetDiv);
   targetDiv.innerHTML = html
+  next()
 }
 
 var showProfileOverviews = function() {
@@ -53,7 +75,7 @@ var showProfileOverviews = function() {
     crossDomain: true,
     data: {data: jsonData},
     success: function(response) {
-      fillProfileTemplates(response.results)
+      fillProfilesTemplate(response.results, addLinkListener)
     }
   })
 }

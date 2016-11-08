@@ -44,7 +44,7 @@
     <script id="profile_overview_template" type="text/x-handlebars-template">
       <div class="profile-overview-area">
         {{#each profiles}}
-        <div class="profile col-xs-6 col-md-3">
+        <div class="profile col-xs-6 col-md-3" id={{this._id}}>
           <div class="picture-div">
             <img class="profile-picture" src="../img/demo_nurses/nurse_1.jpg">
             <i class="heart glyphicon glyphicon-heart"> </i>
@@ -62,9 +62,9 @@
           </div>
           <div class="user-info">
             {{#if this.firstName}}
-            <p class="nurse-name">{{this.firstName}} {{this.lastName}}</p>
+            <a href="#" class="profile_link"><p class="nurse-name">{{this.firstName}} {{this.lastName}}</p></a>
             {{else}}
-            <p class="nurse-name">No name provided</p>
+            <a href="#" class="profile_link"><p class="nurse-name">No name provided</p></a>
             {{/if}}
             {{#if this.isHC}}
               {{#if this.subheading}}
