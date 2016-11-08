@@ -26,145 +26,8 @@
         </div> <!-- End navbar -->
 
       <div class="row">
-        <div class="profile-overview-area">
+        <div id="profile_overview_container"></div>
 
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_1.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_2.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_3.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_4.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_5.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_6.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_7.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-
-          <div class="profile col-xs-6 col-md-3">
-            <div class="picture-div">
-              <img class="profile-picture" src="../img/demo_nurses/nurse_8.jpg">
-              <i class="heart glyphicon glyphicon-heart"> </i>
-                <div class="spec-cert-info">
-                  <p>Nursing specialization</p>
-                </div>
-              </img>
-
-            </div>
-            <div class="user-info">
-              <p class="nurse-name">Nurse Name</p>
-              <p>Customizable nurse subheading</p>
-              <i class="message glyphicon glyphicon-envelope"> </i>
-            </div>
-          </div> <!-- End profile col -->
-
-
-        </div> <!-- End profiles div -->
       </div> <!-- End profiles row -->
     </div> <!-- End site wrapper -->
 
@@ -178,9 +41,41 @@
         <li> <a href="{{target}}"><i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></a></li>
       </ul>
     </script>
-    <script src="../js/browse.js">
+    <script id="profile_overview_template" type="text/x-handlebars-template">
+      <div class="profile-overview-area">
+        {{#each profiles}}
+        <div class="profile col-xs-6 col-md-3">
+          <div class="picture-div">
+            <img class="profile-picture" src="../img/demo_nurses/nurse_1.jpg">
+            <i class="heart glyphicon glyphicon-heart"> </i>
+              <div class="spec-cert-info">
+                {{#if this.specialization}}
+                <p>{{this.specialization}}</p>
+                {{else}}
+                <p>No specialization provided</p>
+                {{/if}}
+              </div>
+            </img>
 
+          </div>
+          <div class="user-info">
+            {{#if this.name}}
+            <p class="nurse-name">{{this.firstName}} {{this.lastName}}</p>
+            {{else}}
+            <p class="nurse-name">No name provided</p>
+            {{/if}}
+            {{#if this.subheading}}
+            <p>{{this.subheading}}</p>
+            {{else}}
+            <p>No subheading provided</p>
+            {{/if}}
+            <i class="message glyphicon glyphicon-envelope"> </i>
+          </div>
+        </div> <!-- End profile col -->
+      </div> <!-- End profiles div -->
+      {{/each}}
     </script>
+    <script src="../js/browse.js"></script>
 
   </body>
 </html>

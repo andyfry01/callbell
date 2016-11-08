@@ -23,6 +23,23 @@ var convertToJSON = function(object) {
   return JSON.stringify(object)
 }
 
+var fillProfileTemplates = function(profileData) {
+
+  console.log('profileData');
+  console.log(profileData);
+  var source = document.getElementById('profile_overview_template').innerHTML
+  var template = Handlebars.compile(source)
+  console.log('template');
+  console.log(template);
+  var html = template({profiles: profileData})
+  console.log("html");
+  console.log(html);
+  var targetDiv = document.getElementById('profile_overview_container')
+  console.log("targetDiv");
+  console.log(targetDiv);
+  targetDiv.innerHTML = html
+}
+
 var showProfileOverviews = function() {
   console.log('showProfileOverviews is firing');
   var data = {
@@ -36,10 +53,8 @@ var showProfileOverviews = function() {
     crossDomain: true,
     data: {data: jsonData},
     success: function(response) {
-      console.log('response');
-      console.log(response);
+      fillProfileTemplates(response.results)
     }
-
   })
 }
 
