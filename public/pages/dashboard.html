@@ -14,9 +14,7 @@
     <!-- Navbar -->
     <div class="container-fluid background">
       <div class="navbar navbar-collapse header" role="navigation">
-        <ul class="nav navbar-nav navbar-left">
-          <li> <i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></li>
-        </ul>
+        <div id="brand_container"></div>
         <ul class="nav navbar-nav navbar-right">
           </li class="navbar-right"> <span class='header-links'> <a href="#">About</a> </span> </li>
           </li class="navbar-right"> <span class='header-links'> <a href="#">Contact</a> </span> </li>
@@ -57,9 +55,16 @@
 
     </div> <!-- End page container -->
 
-    <!-- JS/jQuery/Bootstrap -->
+    <!-- JS/jQuery/Bootstrap/Handlebars -->
     <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script id="brand_template" type="text/x-handlebars-template">
+      <ul class="nav navbar-nav navbar-left">
+        <li> <a href="{{target}}"><i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></a></li>
+      </ul>
+    </script>
+
     <script src="../js/dashboard.js"></script>
 
   </body>

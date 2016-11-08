@@ -3,7 +3,7 @@ var getSessionStorage = function() {
   return sessionStorage.getItem('token')
 }
 
-var fillHandlebars = function () {
+var fillBrandTemplate = function () {
   var source = document.getElementById('brand_template').innerHTML
   var template = Handlebars.compile(source)
   if ( getSessionStorage() ) {
@@ -20,7 +20,7 @@ var fillHandlebars = function () {
 window.onload = function() {
   console.log("hello from landingPageSignup.js");
 
-  fillHandlebars()
+  fillBrandTemplate()
 
   // Submit btns for client/HC professional, input form for username/password
   var formInfo = document.getElementById("signupForm").elements

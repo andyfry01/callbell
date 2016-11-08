@@ -16,9 +16,7 @@
 
       <!-- Navbar -->
       <div class="navbar navbar-collapse header" role="navigation">
-        <ul class="nav navbar-nav navbar-left">
-          <li> <i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></li>
-        </ul>
+        <div id="brand_container"></div>
         <ul class="nav navbar-nav navbar-right">
           </li class="navbar-right"> <span class='header-links'> <a href="#">About</a> </span> </li>
           </li class="navbar-right"> <span class='header-links'> <a href="#">Contact</a> </span> </li>
@@ -30,9 +28,9 @@
         <div class="contentBox col-xs-12 col-md-6 col-md-offset-3">
           <div id="edit_profile_container"></div>
           <div class="signupDiv text-center">
-            <button type="submit" class="signupFormButton btn btn-default" id="HC_submit">Create profile!</button>
+            <button type="submit" class="signupButton btn btn-default" id="HC_submit">Save profile info!</button>
+            <button type="submit" class="signupButton btn btn-default" id="dashboard">View your dashboard</button>
           </div>
-
         </div> <!-- End signup col-->
 
       </div> <!-- End signup row -->
@@ -213,6 +211,13 @@
       </form> <!-- End signup form -->
 
     </script>
+
+    <script id="brand_template" type="text/x-handlebars-template">
+      <ul class="nav navbar-nav navbar-left">
+        <li> <a href="{{target}}"><i class="cross glyphicon glyphicon-plus"></i><span class="brand">Call Bell</span></a></li>
+      </ul>
+    </script>
+
     <script src="../js/edit_profile.js"></script>
 
   </body>
